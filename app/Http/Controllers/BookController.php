@@ -18,7 +18,7 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->publish_Date = $request->publish_date;
         $book->save();
-        return response()->json(['message' => 'Book added'], 201);
+        return response()->json(['message' => 'Книга добавлена'], 201);
     }
 
     public function show($id) {
@@ -26,7 +26,7 @@ class BookController extends Controller
         if (!empty($book)) {
             return response()->json($book);
         } else {
-            return response()->json(['message' => 'Book not found'], 404);
+            return response()->json(['message' => 'Книга не найдена'], 404);
         }
     }
 
@@ -37,9 +37,9 @@ class BookController extends Controller
             if (!is_null($request->author)) $book->author = $request->author;
             if (!is_null($request->publish_date)) $book->publish_date = $request->publish_date;
             $book->save();
-            return response()->json(['message' => 'Book updated']);
+            return response()->json(['message' => 'Книга обновлена']);
         } else {
-            return response()->json(['message' => 'Book not found'], 404);
+            return response()->json(['message' => 'Книга не найдена'], 404);
         }
     }
 
@@ -47,9 +47,9 @@ class BookController extends Controller
         if (Books::where('id', $id)->exists()) {
             $book = Books::find($id);
             $book->delete();
-            return response()->json(['message' => 'Book deleted'], 202);
+            return response()->json(['message' => 'Книга удалена'], 202);
         } else {
-            return response()->json(['message' => 'Book not found'], 404);
+            return response()->json(['message' => 'Книга не найдена'], 404);
         }
     }
 }
